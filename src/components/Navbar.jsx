@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiShoppingBag } from 'react-icons/fi';
 import { BsFillPencilFill } from 'react-icons/bs';
-import { login, logout } from '../api/firebase';
+import { login, logout, onUserStateChage } from '../api/firebase';
 
 export default function Navbar() {
   const [user, setUser] = useState();
+
+  useEffect(() => {
+    onUserStateChage(user => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
+
   const handleLogin = () => {
     login().then(setUser);
   };
+
   const handleLogout = () => {
     logout().then(setUser);
   };
