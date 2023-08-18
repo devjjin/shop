@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-export async function login() {
+export function login() {
   return signInWithPopup(auth, provider)
     .then(result => {
       const user = result.user;
@@ -28,8 +28,8 @@ export async function login() {
     .catch(console.error);
 }
 
-export async function logout() {
-  return signOut(auth).then(() => null);
+export function logout() {
+  return signOut(auth);
 }
 
 export function onUserStateChage(callback) {
