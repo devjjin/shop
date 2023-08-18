@@ -10,7 +10,6 @@ export default function Navbar() {
 
   useEffect(() => {
     onUserStateChage(user => {
-      console.log(user);
       setUser(user);
     });
   }, []);
