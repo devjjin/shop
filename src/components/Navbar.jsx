@@ -9,7 +9,10 @@ export default function Navbar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    onUserStateChage(setUser);
+    onUserStateChage(user => {
+      console.log(user);
+      setUser(user);
+    });
   }, []);
 
   const handleLogin = () => {
