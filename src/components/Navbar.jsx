@@ -8,18 +8,15 @@ export default function Navbar() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    onUserStateChage(user => {
-      console.log(user);
-      setUser(user);
-    });
+    onUserStateChage(setUser);
   }, []);
 
   const handleLogin = () => {
-    login().then(setUser);
+    login();
   };
 
   const handleLogout = () => {
-    logout().then(setUser);
+    logout();
   };
 
   return (

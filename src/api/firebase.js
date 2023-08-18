@@ -19,17 +19,11 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 export function login() {
-  return signInWithPopup(auth, provider)
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-      return user;
-    })
-    .catch(console.error);
+  signInWithPopup(auth, provider).catch(console.error);
 }
 
 export function logout() {
-  return signOut(auth);
+  signOut(auth);
 }
 
 export function onUserStateChage(callback) {
