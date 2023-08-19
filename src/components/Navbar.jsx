@@ -15,14 +15,6 @@ export default function Navbar() {
     });
   }, []);
 
-  const handleLogin = () => {
-    login();
-  };
-
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
     <header className="flex justify-between border-b border-gray-300 p-2">
       <Link to="/" className="flex items-center text-4xl text-brand">
@@ -38,8 +30,8 @@ export default function Navbar() {
           </Link>
         )}
         {user && <User user={user} />}
-        {!user && <Button text={'Login'} onClick={handleLogin} />}
-        {user && <Button text={'Logout'} onClick={handleLogout} />}
+        {!user && <Button text={'Login'} onClick={login} />}
+        {user && <Button text={'Logout'} onClick={logout} />}
       </nav>
     </header>
   );
