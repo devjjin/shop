@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import Button from '../components/ui/Button';
 import { uploadImage } from '../api/uploader';
+import { addNewProduct } from '../api/firebase';
 
 export default function NewProduct() {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({});
   const [file, setFile] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
     uploadImage(file).then(url => {
       console.log(url);
+      addNewProduct(product, url);
     });
   };
 
@@ -60,7 +62,7 @@ export default function NewProduct() {
         <input
           type="text"
           name="description"
-          value={product.name ?? ''}
+          value={product.description ?? ''}
           placeholder="제품 설명"
           required
           onChange={handleChage}
