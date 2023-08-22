@@ -3,7 +3,7 @@ import { login, logout, onUserStateChage } from '../api/firebase';
 
 const AuthContext = createContext();
 
-export function AUthContextProvider({ children }) {
+export function AuthContextProvider({ children }) {
   const [user, setUser] = useState();
 
   useEffect(() => {
