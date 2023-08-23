@@ -62,7 +62,7 @@ export async function addNewProduct(product, image) {
   });
 }
 
-export async function getProducts() {
+export async function fetchProducts() {
   return get(ref(database, 'products')) //
     .then(snapshot => {
       if (snapshot.exists()) {
