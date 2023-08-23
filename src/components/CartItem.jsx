@@ -1,6 +1,7 @@
 import React from 'react';
-import { addOrUpdateToCart } from '../api/firebase';
+import { addOrUpdateToCart, removeFromCart } from '../api/firebase';
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
 
 export default function CartItem({
   product,
@@ -15,6 +16,8 @@ export default function CartItem({
   const handlePlus = () =>
     addOrUpdateToCart(uid, { ...product, quantity: quantity + 1 });
 
+  const handleDelete = () => removeFromCart(uid, id);
+
   return (
     <li>
       <img src={image} alt={title} />
@@ -25,6 +28,7 @@ export default function CartItem({
           <AiOutlineMinusSquare onClick={handleMinus} />
           <span>{quantity}</span>
           <AiOutlinePlusSquare onClick={handlePlus} />
+          <RiDeleteBin5Fill onClick={handleDelete} />
         </div>
       </div>
     </li>
